@@ -2,12 +2,12 @@ $:.push File.expand_path("../lib", __FILE__)
 require "rabl-rails/version"
 
 Gem::Specification.new do |s|
-  s.name        = "rabl-rails"
+  s.name        = "rabl-rails-empty-templates"
   s.version     = RablRails::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Christopher Cocchi-Perrier"]
   s.email       = ["cocchi.c@gmail.com"]
-  s.homepage    = "https://github.com/ccocchi/rabl-rails"
+  s.homepage    = "https://github.com/alexpinsky/rabl-rails-empty-templates"
   s.summary     = "Fast Rails 3+ templating system with JSON, XML and PList support"
   s.description = "Fast Rails 3+ templating system with JSON, XML and PList support"
 
