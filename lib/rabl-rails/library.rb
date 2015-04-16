@@ -72,7 +72,10 @@ module RablRails
     end
 
     def fetch_source(path, view)
-      view.lookup_context.find_template(path, [], false).source
+      template = view.lookup_context.find_template(path, [], false)
+      puts ">>>>>> template.source: #{template.source}"
+      puts ">>>>>> template.identifier: #{template.identifier}"
+      source = template.source || File.binread(template.identifier)
     end
   end
 end
