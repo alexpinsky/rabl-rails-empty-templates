@@ -32,6 +32,8 @@ module RablRails
     end
 
     def compile_template_from_source(source, view)
+      puts ">>>>>> source: #{source}"
+      puts ">>>>>> view: #{view}"
       if RablRails.configuration.cache_templates
         path = view.instance_variable_get(:@virtual_path)
         synchronized_compile(path, source, view)
