@@ -32,12 +32,11 @@ module RablRails
     end
 
     def compile_template_from_source(source, view)
-      puts ">>>>>> source: #{source}"
-      puts ">>>>>> view: #{view}"
       if RablRails.configuration.cache_templates
         path = view.instance_variable_get(:@virtual_path)
         synchronized_compile(path, source, view)
       else
+        puts ">>>>>> compile_template_from_source"
         compile(source, view)
       end
     end
@@ -47,6 +46,7 @@ module RablRails
         synchronized_compile(path, nil, view)
       else
         source = fetch_source(path, view)
+        puts ">>>>>> compile_template_from_path"
         compile(source, view)
       end
     end
@@ -54,6 +54,7 @@ module RablRails
     private
 
     def synchronized_compile(path, source, view)
+      puts ">>>>>> synchronized_compile"
       @cached_templates[path] || @mutex.synchronize do
         # Any thread holding this lock will be compiling the template needed
         # by the threads waiting. So re-check the template presence to avoid
@@ -66,6 +67,7 @@ module RablRails
     end
 
     def compile(source, view)
+      puts ">>>>>> source: #{source}" if source.nil?
       Compiler.new(view).compile_source(source)
     end
 
